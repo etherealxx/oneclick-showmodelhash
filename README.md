@@ -1,4 +1,4 @@
-# sd_model_hash_recursive
+# oneclick-sdmodel_hash
 One-click Python script to grab hash of a ckpt model in a folder, recursively.
 Just download the .py file and run it on your Stable Diffusion model folder (or wherefer you put your model on).
 
