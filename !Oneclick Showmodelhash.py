@@ -1,4 +1,4 @@
-#modified by etherealxx
+#etherealxx
 import os as os
 import sys
 from pathlib import Path
