@@ -1,5 +1,6 @@
 # oneclick-showmodelhash
-One-click Python script to grab hash of a ckpt model in a folder, recursively.
+
+One-click Python script to grab hash of a `.ckpt` and `.safetensors` model in a folder, recursively.
 Just download the .py file and run it on your Stable Diffusion model folder (or wherever you put your model on).
 ![github gi 2](https://user-images.githubusercontent.com/64251396/204113178-59825cc4-4d66-4f9e-a4dd-702471bc7276.gif)
 

@@ -1,9 +1,8 @@
 #etherealxx
 import os as os
 import sys
-from pathlib import Path
 
-cdir = os.getcwd()
+cdir = os.getcwd()  # get the current working directory
 
 def model_hash(filename):
     try:
@@ -21,32 +20,29 @@ def model_hash(filename):
 print("  Hash   | Model Name")
 print("----------------------")
 
-for filenamex in Path(cdir).rglob('*.ckpt'):
-    model_hash(filenamex)
+# search for all files with .ckpt or .safetensors extensions in the current working directory and subdirectories
+for root, dirs, files in os.walk(cdir):
+    for file in files:
+        if file.endswith('.ckpt') or file.endswith('.safetensors'):
+            filenamex = os.path.join(root, file)
+            model_hash(filenamex)
 
 print("----------------------")
 print("Writing file...")
 
 og_stdout = sys.stdout
 
+# redirect output to a file named "!modelhash.txt"
 with open('!modelhash.txt', 'w') as f:
-    sys.stdout = f #
-    for filenamex in Path(cdir).rglob('*.ckpt'):
-        model_hash(filenamex)
+    sys.stdout = f 
+    # search for all files with .ckpt or .safetensors extensions in the current working directory and subdirectories
+    for root, dirs, files in os.walk(cdir):
+        for file in files:
+            if file.endswith('.ckpt') or file.endswith('.safetensors'):
+                filenamex = os.path.join(root, file)
+                model_hash(filenamex)
     sys.stdout = og_stdout
 
 print("File !modelhash.txt written.")
 print("----------------------")
 os.system("pause")
-
-#below are old methods, i'm still learning python :)
-
-#import glob
-#for filenamex in glob.iglob(cdir + '**/*.ckpt', recursive=True):
-#     model_hash(filenamex)
-
-#for filenamex in os.listdir(cdir):
-#    filepath = os.path.join(cdir, filenamex)
-#    filenamey, fileext = os.path.splitext(filenamex)
-#    if fileext == '.ckpt':
-#        model_hash(filepath)
